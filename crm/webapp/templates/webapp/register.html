@@ -1,0 +1,57 @@
+{% extends 'webapp/base.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<body>
+    <div class="container bg-light shadow-md p-5 w-50 rounded form-layout ">
+
+        <h3>Create your account </h3>
+
+        <h5> Start managing your clients today!</h5>
+
+        <hr>
+        <br>
+
+        {% if err %}
+
+        <h2 class="text-danger pb-3"> Oops! Registration Unsuccessful</h2>
+
+        <!--<p class="text-danger"> * {{msg1}} </p>
+        <p class="text-danger pb-2"> * {{msg2}} </p> -->
+
+        {% endif %}
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            {{ form.username|as_crispy_field }}
+
+            <br>
+
+            {{ form.password1|as_crispy_field }}
+
+            <br>
+            {{ form.password2|as_crispy_field }}
+
+            <br>
+            <button type = "submit" class="btn btn-outline-primary  w-100 btn-block p-2"> Create account &nbsp;<i class="fa fa-user" aria-hidden="true"></i></button>
+
+
+        </form>
+
+
+        <div  class = "text-center">
+            <br>
+
+            <p> Already have a account ? <br><a class="btn btn-success w-10" href="{% url 'mylogin'%}">Login</a></p>
+
+        </div>
+
+
+    </div>
+</body>
+
+{% endblock %}

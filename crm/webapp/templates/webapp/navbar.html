@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between ">
+
+    <a class="navbar-brand main-heading" href={% url 'home'%}>
+
+        &nbsp; ProjectX
+    </a>
+
+    <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNavDropdown"
+    aria-controls="navbarNav"
+    aria-expanded = "false"
+    aria-label = "Toggle navigation"
+    >
+
+    <span class="navbar-toggler-icon">  </span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center  justify-content-between" id="navbarNavDropdown" >
+
+        <ul class="navbar-nav mr-auto ">
+
+            &nbsp; &nbsp; &nbsp;
+
+            {% if user.is_authenticated %}
+
+                <li class="nav-item">
+                    
+                    <a class="btn btn-outline-warning" href="{% url 'dashboard'%}"> Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i></a>
+                <li>
+                    
+                &nbsp; &nbsp; &nbsp;
+
+                <li class="nav-item">
+
+                    <a class="btn btn-outline-danger" href="{% url 'userlogout'%}"> Sign Out <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                </li>
+
+            {% else %}
+
+            <li class="nav-item">
+                    
+                <a class="btn btn-outline-success" href="{% url 'register'%}"> Register &nbsp; <i class="fa fa-home" aria-hidden="true"></i></a>
+            <li>
+                
+            &nbsp; &nbsp; &nbsp;
+
+            <li class="nav-item">
+
+                <a class="btn btn-outline-success" href="{% url 'mylogin'%}"> Login <i class= "fa fa-sign-in" aria-hidden ="true"></i></a>
+            </li>
+
+            {% endif %}
+
+        </ul>
+
+    </div>
+
+</nav>

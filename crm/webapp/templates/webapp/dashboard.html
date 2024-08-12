@@ -1,0 +1,70 @@
+{% extends 'webapp/base.html'%}
+
+
+{% block content%}
+
+<h3>Welcome to dashboard, {{user}}!</h3>
+
+<hr>
+
+<a class="btn btn-outline-primary btn-sm" href={% url 'createrecord' %}>
+    Create a new record
+</a>
+
+<hr>
+
+<table class="table table-hover table-bordered">
+
+    <thead class="table-light">
+
+        <tr>
+
+            <th scope="col">ID</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">City</th>
+            <th scope="col">Province</th>
+            <th scope="col">Country</th>
+            <th scpoe="col">DOJ</th>
+            
+            <th scope="col"> View </th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% if records %}
+
+        {% for record in records%}
+        <tr>
+
+            <td>{{record.id}}</td>
+
+            <td>{{ record.first_name}} {{ record.last_name}}</td>
+
+            <td>{{ record.email}}</td>
+
+            <td>{{ record.phone}}</td>
+
+            <td>{{ record.city}}</td>
+
+            <td>{{ record.province}}</td>
+
+            <td>{{ record.country}}</td>
+
+            <td>{{record.creation_date}}</td>
+
+            <td><a href="{% url 'readrecord' record.id%}" class="btn btn-outline-success btn-sm"> <i class="fa fa-eye" aria-hidden="true"></i></a></td>
+
+
+        </tr>
+
+        {% endfor %}
+        {% endif %}
+
+    </tbody>
+</table>
+
+{% endblock %}
